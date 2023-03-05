@@ -11,7 +11,8 @@ export const map :Room[]= [
         text : "Você acorda em um quarto com duas portas, em qual você entra?",
         doors: [
             { path: "/game/1000", text: "Porta de madeira"},
-            { path: "/game/2000", text: "Porta de aço"}
+            { path: "/game/2000", text: "Porta de aço"},
+            { path: "/game/4000", text: "Quarto da Maria"}
         ]
 
     },
@@ -41,5 +42,14 @@ export const map :Room[]= [
         ]
 
     },
+    {
+        id : "4000",
+        text : "<p>Quarto da maria</p><p>A maria te mordeu e você morreu</p>",
+        doors: [
+            { path: "/game/0000", text: "Começar novamente"},
+        ]
+
+    },
+
     
 ]

@@ -6,7 +6,6 @@ export async function getStaticProps(context:any) {
     const {params} = context
     const rooms:Room[] = map
     const room = rooms.find(r => r.id == params.pageId)
-    console.log(room)
     return {
         props: {room}
     }
@@ -24,6 +23,8 @@ export async function getStaticPaths() {
 
     return { paths, fallback:false}
 }
+
+
 
 export default function Page({ room } :any) {
 
