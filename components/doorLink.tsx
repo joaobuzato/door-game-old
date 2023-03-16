@@ -2,9 +2,10 @@ import Link from "next/link"
 import { Door } from "../public/types"
 
 export const DoorLink = (props:{door:Door}) => {
+    const doorPath = `/game/${props.door.path}`
     return (
         <>
-            <div><Link href={props.door.path}>{props.door.text}</Link></div>
+            <div><Link href={doorPath}>{props.door.text}</Link></div>
         </>
     )
 }
