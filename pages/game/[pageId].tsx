@@ -1,6 +1,10 @@
-import { useRouter } from "next/router"
-import { map,Room } from "../../public/map"
+
+import { map } from "../../public/map"
 import Link from 'next/link'
+import Parser from 'html-react-parser';
+import {Room, Door} from "../../public/types"
+import { DoorLink} from "../../components/doorLink"
+import styles from "../../styles/[pageId].module.css"
 
 export async function getStaticProps(context:any) {
     const {params} = context
@@ -28,16 +32,17 @@ export async function getStaticPaths() {
 
 export default function Page({ room } :any) {
 
-    
-    console.log(room)
-
     return (<>
-    {room.text}
-    <ul>
-        {room.doors.map((door:{path:string,text:string}) => (
-            <li><Link href={door.path}>{door.text}</Link></li>
-        ))}
-    </ul>
+    <div className={styles.room_card}>
+        <h1 className={styles.room_title}>{room.title}</h1>
+        <p className={styles.room_p}>{Parser(room.text)}</p>
+
+        <h3 className={styles.question}>Em qual porta entrar?</h3>
+
+            {room.doors.map((door:Door) => (
+            <DoorLink door={door}></DoorLink>
+            ))}
+    </div>
     </>)
 
 }
