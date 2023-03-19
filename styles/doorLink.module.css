@@ -1,0 +1,23 @@
+.door_link {
+    background-color: aliceblue;
+    border-radius: 50% 50% 5% 5%;
+    font-family: 'Courier New', Courier, monospace;
+    height: 200px;
+    max-width: 150px;
+    color: black;
+    text-decoration: none;
+
+}
+.door_span {
+    
+    
+}
+
+.door_div {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% auto 33%; 
+    column-gap: 10px;
+    row-gap: 15px;
+
+}
