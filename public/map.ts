@@ -5,48 +5,57 @@ export const map :Room[]= [
     {
         id : "0000",
         title: "O quarto mais escuro que você já viu (ou não viu)",
-        text : "Este é o quarto mais escuro que você já viu em toda a sua vida. O preto no quarto é tão preto que você não enxerga nem seus pensamentos. É como estar cego. Você tateia e consegue encontrar duas portas.",
+        text : "Você abre os olhos e não vê absolutamente nada. Este é o quarto mais escuro que você já viu em toda a sua vida. O preto no quarto é tão preto que você não enxerga nem seus pensamentos. É como estar cego. Você tateia e consegue encontrar duas portas.",
         doors: [
-            { path: "1000", text: "Porta de madeira", color:"green"},
-            { path: "2000", text: "Porta de aço", color:"brown"},
+            { path: "1000", text: "Porta de madeira", color:"#FFD700"},
+            { path: "2000", text: "Porta de aço", color:"#808080"},
         ]
 
     },
     {
         id : "1000",
-        title:"",
-        text : "Você entrou na porta de madeira! ",
+        title:"O Quarto com cheiro de tudo que você pode imaginar",
+        text : `O quarto que está em volta de você é do amarelo mais feio que você já viu. O cheiro é tão ruim que o ar do quarto chega a ser mais pesado. Há de tudo: algodão doce, pipoca, plástico queimado, sangue e [CENSURADO]. Seus pés pisam em algo que faz "crec". É uma barata. Você costuma sentir cheiro de baratas? De qualquer maneira, você vê mais duas portas. Suas narinas vão amar sair desse inferno olfativo.`,
         doors: [
-            { path: "2000", text: "Porta de aço"},
-            { path: "3000", text: "Cair no buraco"},
+            { path: "2000", text: "Porta de aço", color:"#808080"},
+            { path: "3000", text: "Porta rosa", color:"#FF00FF"},
         ]
 
     },
     {
         id : "2000",
-        title:"",
-        text : "Você entrou na porta de aço! ",
+        title:"Quarto-submarino",
+        text : "Este quarto está debaixo dágua. Você de alguma maneira sabe disso. Sua cabeça dói com a pressão de várias atmosferas na sua cabeça. No chão você encontra uma carta, que diz simplesmente 'Infelizmente não poderei comparecer ao café da manhã de quinta feira.'. Você fica muito triste, queria o café da manhã.  ",
         doors: [
-            { path: "1000", text: "Porta de madeira"},
-            { path: "3000", text: "Cair no buraco"},
+            { path: "3000", text: "Porta rosa", color:"#FF00FF"},
+            { path: "4000", text: "Porta de material desconhecido", color:"#GGGGGG"},
         ]
 
     },
     {
         id : "3000",
-        title:"",
-        text : "Você caiu no buraco! ",
+        title:"O quarto de bebê",
+        text : "O quarto tem cheirinho de criança, mas não uma criança qualquer. Essa é a criança de uma não-mãe. Uma descrição em texto não seria suficientemente imprecisa para descrever a monstruosidade que está no porta retrato da não-criança. Os brinquedinhos dela são dedos. Humanos? Humanos. Subumanos. Superumanos. Você teme nunca mais ser feliz. ",
         doors: [
-            { path: "0000", text: "Começar novamente"},
+            { path: "0001", text: "A porta."},
         ]
 
     },
     {
         id : "4000",
-        title:"",
-        text : "<p>Quarto da maria</p><p>A maria te mordeu e você morreu</p>",
+        title:"A sala da escola da infância dos tios dos seus pais.",
+        text : "Minha nossa, quantas carteiras desenhadas! Essa sala é certamente dos anos [CENSURADO], quase 300 anos antes de você nascer, ou parece ser. Não importa, as escolas são iguais, você pensa. Não importa. ",
         doors: [
-            { path: "0000", text: "Começar novamente"},
+            { path: "0001", text: "A porta. "},
+        ]
+
+    },
+    {
+        id : "0001",
+        title:"Não dá mais, você se perdeu. ",
+        text : "",
+        doors: [
+            { path: "0001", text: "A porta. "},
         ]
 
     },
