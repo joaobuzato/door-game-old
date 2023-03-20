@@ -39,7 +39,7 @@ export default function Page({ room } :any) {
 
         <h3 className={styles.question}>Em qual porta entrar?</h3>
 
-        <div className={styles.door_div}>
+        <div className={styles.door_container}>
             {room.doors.map((door:Door) => (
             <DoorLink door={door}></DoorLink>
             ))}

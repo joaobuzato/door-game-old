@@ -7,9 +7,8 @@ export const map :Room[]= [
         title: "O quarto mais escuro que você já viu (ou não viu)",
         text : "Este é o quarto mais escuro que você já viu em toda a sua vida. O preto no quarto é tão preto que você não enxerga nem seus pensamentos. É como estar cego. Você tateia e consegue encontrar duas portas.",
         doors: [
-            { path: "1000", text: "Porta de madeira"},
-            { path: "2000", text: "Porta de aço"},
-            { path: "4000", text: "Quarto da Maria"}
+            { path: "1000", text: "Porta de madeira", color:"green"},
+            { path: "2000", text: "Porta de aço", color:"brown"},
         ]
 
     },
