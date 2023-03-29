@@ -2,7 +2,7 @@ import {Item} from "./types"
 
 export default class InventoryManager {
     inventory:Item[]
-    constructor(inventory:Item[], window:Window){
+    constructor(inventory:Item[]){
         if (!inventory){
             window.sessionStorage.setItem("inventory", "[]")
             inventory = []

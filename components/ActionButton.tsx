@@ -2,8 +2,8 @@ import Link from "next/link"
 import { Action, Item, Condition } from "../public/types"
 import InventoryManager from "@/public/inventoryManager";
 
-export const ActionButton = (props:{window:Window, action:Action, inventory: Item[]}) => {
-    const inventoryManager = new InventoryManager(props.inventory, props.window)
+export const ActionButton = (props:{action:Action, inventory: Item[]}) => {
+    const inventoryManager = new InventoryManager(props.inventory)
 
     const isConditionsMet = (conditions:Condition[]) => {
         let isConditionsMet = true;

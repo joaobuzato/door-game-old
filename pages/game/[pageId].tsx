@@ -38,9 +38,8 @@ export async function getStaticPaths() {
 export default function Page({ room } :any) {
 
     let inventory: Item[]
-    let w:Window
     useEffect(() => {
-        w = window
+       
         inventory = JSON.parse(window.sessionStorage.getItem("inventory") || "[]") as Item[]
     })
 
@@ -52,7 +51,7 @@ export default function Page({ room } :any) {
         <h3>Qual ação tomar?</h3>
         <div className={styles.door_container}>
             {room.actions.map((action:Action) => (
-            <ActionButton window={w} inventory={inventory} action={action}></ActionButton>
+            <ActionButton inventory={inventory} action={action}></ActionButton>
             ))}
         </div>
 
