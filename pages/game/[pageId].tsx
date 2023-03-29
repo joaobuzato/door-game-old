@@ -2,9 +2,11 @@
 import { map } from "../../public/map"
 import Link from 'next/link'
 import Parser from 'html-react-parser';
-import {Room, Door} from "../../public/types"
-import { DoorLink} from "../../components/doorLink"
+import {Room, Door, Action, Item} from "../../public/types"
+import { DoorLink} from "../../components/DoorLink"
 import styles from "../../styles/[pageId].module.css"
+import { ActionButton } from "@/components/ActionButton";
+import { useEffect } from "react";
 
 export async function getStaticProps(context:any) {
     const {params} = context
@@ -28,14 +30,31 @@ export async function getStaticPaths() {
     return { paths, fallback:false}
 }
 
+//TODO gerenciamento de inventario
+
+
 
 
 export default function Page({ room } :any) {
+
+    let inventory: Item[]
+    let w:Window
+    useEffect(() => {
+        w = window
+        inventory = JSON.parse(window.sessionStorage.getItem("inventory") || "[]") as Item[]
+    })
 
     return (<>
     <div className={styles.room_card}>
         <h1 className={styles.room_title}>{room.title}</h1>
         <p className={styles.room_p}>{Parser(room.text)}</p>
+
+        <h3>Qual ação tomar?</h3>
+        <div className={styles.door_container}>
+            {room.actions.map((action:Action) => (
+            <ActionButton window={w} inventory={inventory} action={action}></ActionButton>
+            ))}
+        </div>
 
         <h3 className={styles.question}>Em qual porta entrar?</h3>
 
