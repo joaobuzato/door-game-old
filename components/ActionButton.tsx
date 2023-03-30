@@ -1,15 +1,12 @@
-import Link from "next/link"
 import { Action, Item, Condition } from "../public/types"
 import InventoryManager from "@/public/inventoryManager";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import InventoryContext from "./InventoryContext";
 
-export const ActionButton = (props:{action:Action, inventory: Item[]}) => {
+export const ActionButton = (props:{action:Action}) => {
     let inventoryManager:InventoryManager
-    useEffect(() => {
-
-        inventoryManager = new InventoryManager(props.inventory, window)
-    })
-    
+    const {inventory, setInventory} = useContext(InventoryContext)
+    inventoryManager = new InventoryManager(inventory, setInventory)
 
     const isConditionsMet = (conditions:Condition[]) => {
         let isConditionsMet = true;
@@ -35,7 +32,6 @@ export const ActionButton = (props:{action:Action, inventory: Item[]}) => {
                     }
                     break
                 case "greater":
-                    console.log(cond)
                     if (element1 <= cond.element2){
                         isConditionsMet = false;
                     }
@@ -47,7 +43,6 @@ export const ActionButton = (props:{action:Action, inventory: Item[]}) => {
                     break
             }
         }
-        console.log("isConditionMet", isConditionsMet)
         return isConditionsMet
     }
 
@@ -63,7 +58,6 @@ export const ActionButton = (props:{action:Action, inventory: Item[]}) => {
             inventoryManager.useItem(props.action.element, props.action.param)
         }
         console.log(props.action.text)
-        console.log(JSON.parse(window.localStorage.getItem("inventory") || "[]"))
     }
     return (
         <>

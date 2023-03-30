@@ -1,49 +1,46 @@
 import {Item} from "./types"
+import InventoryContext from "@/components/InventoryContext"
+import { useContext } from "react"
 
 export default class InventoryManager {
-    inventory:Item[]
-    constructor(inventory:Item[], window:Window){
-        if (!inventory){
-            window.localStorage.setItem("inventory", "[]")
-            inventory = []
-        }
-        this.inventory = inventory
-    };
+    items:Item[];
+    setInventory
+    constructor(items:Item[], setInventory:(items:Item[])=>{}){
+        this.items = items
+        this.setInventory = setInventory
+    }
+
 
     storeItem(name:string,param:number){
-        const foundItem = this.inventory.filter(i => i.name==name)[0]
+        const foundItem = this.items.filter(i => i.name==name)[0]
         
         if(foundItem){
-            console.log("foundItem storeItem", foundItem)
-            const index = this.inventory.indexOf(foundItem);
-            this.inventory[index].param = foundItem.param + param
-            console.log("storeItem Inventory", this.inventory)
+            const index = this.items.indexOf(foundItem);
+            this.items[index].param = foundItem.param + param
         } else {
-            console.log("foundItem storeItem", foundItem)
-            this.inventory.push({name,param})
-            console.log("storeItem Inventory", this.inventory)
+            this.items.push({name,param})
         }
-        window.localStorage.inventory = JSON.stringify(this.inventory)
+        this.setInventory(this.items)
         
     }
 
     useItem(name:string,param:number){
-        console.log("inventory", this.inventory)
+        console.log("inventory", this.items)
         console.log(name,param)
-        console.log("useItem", this.inventory.filter(i => i.name == name))
-        const foundItem = this.inventory.filter(i => i.name==name)[0]
-        const index = this.inventory.indexOf(foundItem);
+        console.log("useItem", this.items.filter(i => i.name == name))
+        const foundItem = this.items.filter(i => i.name==name)[0]
+        const index = this.items.indexOf(foundItem);
         if(foundItem && foundItem.param > param){
-            this.inventory[index].param = foundItem.param - param
+            this.items[index].param = foundItem.param - param
         } else {
-            this.inventory = this.inventory.splice(index, 1);
+            this.items = this.items.splice(index, 1);
         }
 
-        window.localStorage.inventory = JSON.stringify(this.inventory)
+        this.setInventory(this.items)
     }
 
     getItemByName(name:string){
-        return this.inventory.filter(i => i.name==name)[0]
+        return this.items.filter(i => i.name==name)[0]
     }
     
 }

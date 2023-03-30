@@ -30,18 +30,8 @@ export async function getStaticPaths() {
     return { paths, fallback:false}
 }
 
-//TODO gerenciamento de inventario
-
-
-
 
 export default function Page({ room } :any) {
-
-    let inventory: Item[]
-    useEffect(() => {
-       
-        inventory = JSON.parse(window.localStorage.getItem("inventory") || "[]") as Item[]
-    })
 
     return (<>
     <div className={styles.room_card}>
@@ -51,7 +41,7 @@ export default function Page({ room } :any) {
         <h3>Qual ação tomar?</h3>
         <div className={styles.door_container}>
             {room.actions.map((action:Action) => (
-            <ActionButton inventory={inventory} action={action}></ActionButton>
+            <ActionButton action={action}></ActionButton>
             ))}
         </div>
 
