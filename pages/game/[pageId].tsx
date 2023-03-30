@@ -40,7 +40,7 @@ export default function Page({ room } :any) {
     let inventory: Item[]
     useEffect(() => {
        
-        inventory = JSON.parse(window.sessionStorage.getItem("inventory") || "[]") as Item[]
+        inventory = JSON.parse(window.localStorage.getItem("inventory") || "[]") as Item[]
     })
 
     return (<>

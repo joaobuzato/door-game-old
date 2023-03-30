@@ -2,43 +2,44 @@ import {Item} from "./types"
 
 export default class InventoryManager {
     inventory:Item[]
-    constructor(inventory:Item[]){
+    constructor(inventory:Item[], window:Window){
         if (!inventory){
-            window.sessionStorage.setItem("inventory", "[]")
+            window.localStorage.setItem("inventory", "[]")
             inventory = []
         }
         this.inventory = inventory
-        
-        console.log(this.inventory)
-    }
+    };
 
-    storeItem(item:string,param:number){
-        const foundItem = this.inventory.filter(i => i.name==item)[0]
+    storeItem(name:string,param:number){
+        const foundItem = this.inventory.filter(i => i.name==name)[0]
         
         if(foundItem){
+            console.log("foundItem storeItem", foundItem)
             const index = this.inventory.indexOf(foundItem);
             this.inventory[index].param = foundItem.param + param
-            console.log(this.inventory)
+            console.log("storeItem Inventory", this.inventory)
         } else {
-            this.inventory.push({name:item,param})
-            console.log(this.inventory)
+            console.log("foundItem storeItem", foundItem)
+            this.inventory.push({name,param})
+            console.log("storeItem Inventory", this.inventory)
         }
-        window.sessionStorage.inventory = JSON.stringify(this.inventory)
+        window.localStorage.inventory = JSON.stringify(this.inventory)
         
     }
 
-    useItem(item:string,param:number){
-        const foundItem = this.inventory.filter(i => i.name==item)[0]
+    useItem(name:string,param:number){
+        console.log("inventory", this.inventory)
+        console.log(name,param)
+        console.log("useItem", this.inventory.filter(i => i.name == name))
+        const foundItem = this.inventory.filter(i => i.name==name)[0]
         const index = this.inventory.indexOf(foundItem);
-        if(foundItem.param > param){
+        if(foundItem && foundItem.param > param){
             this.inventory[index].param = foundItem.param - param
-            console.log(this.inventory)
         } else {
             this.inventory = this.inventory.splice(index, 1);
-            console.log(this.inventory)
         }
 
-        window.sessionStorage.inventory = JSON.stringify(this.inventory)
+        window.localStorage.inventory = JSON.stringify(this.inventory)
     }
 
     getItemByName(name:string){

@@ -20,7 +20,7 @@ export const map :Room[]= [
         id : "1000",
         title:"O Quarto com cheiro de tudo que você pode imaginar",
         text : `O quarto que está em volta de você é do amarelo mais feio que você já viu. O cheiro é tão ruim que o ar do quarto chega a ser mais pesado. Há de tudo: algodão doce, pipoca, plástico queimado, sangue e [CENSURADO]. Seus pés pisam em algo que faz "crec". É uma barata. Você costuma sentir cheiro de baratas? De qualquer maneira, você vê mais duas portas. Suas narinas vão amar sair desse inferno olfativo.`,
-        actions: [],
+        actions: [{type:"use", element:"faca", param: 1, text:"Você USOU a faca puta merdaaaaaaaaaaaaaaaaaaaaaaaa!", conditions:[{element1:"faca", type:"greater", element2:3}]}],
         doors: [
             { path: "2000", text: "Porta de aço", color:"#808080"},
             { path: "3000", text: "Porta rosa", color:"#FF00FF"},

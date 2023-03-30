@@ -1,14 +1,20 @@
 import Link from "next/link"
 import { Action, Item, Condition } from "../public/types"
 import InventoryManager from "@/public/inventoryManager";
+import { useEffect } from "react";
 
 export const ActionButton = (props:{action:Action, inventory: Item[]}) => {
-    const inventoryManager = new InventoryManager(props.inventory)
+    let inventoryManager:InventoryManager
+    useEffect(() => {
+
+        inventoryManager = new InventoryManager(props.inventory, window)
+    })
+    
 
     const isConditionsMet = (conditions:Condition[]) => {
         let isConditionsMet = true;
-        let element1;
-        let element2;
+        let element1 = 0;
+        let element2 = 0;
         for(const cond of conditions){
             if(typeof cond.element1 == "string"){
                 const item = inventoryManager.getItemByName(cond.element1)
@@ -24,45 +30,44 @@ export const ActionButton = (props:{action:Action, inventory: Item[]}) => {
             }
             switch(cond.type){
                 case "equals":
-                    if (cond.element1 != cond.element2){
+                    if (element1 != cond.element2){
                         isConditionsMet = false;
                     }
                     break
                 case "greater":
-                    if (cond.element1 <= cond.element2){
+                    console.log(cond)
+                    if (element1 <= cond.element2){
                         isConditionsMet = false;
                     }
                     break
                 case "lesser":
-                    if (cond.element1 >= cond.element2){
+                    if (element1 >= cond.element2){
                         isConditionsMet = false;
                     }
                     break
             }
         }
+        console.log("isConditionMet", isConditionsMet)
         return isConditionsMet
     }
 
     const actionHandler = () => {
         const action = props.action;
         if(!isConditionsMet(action.conditions)){
-
+            console.log("A CONDIÇÃO NÃO FOI ATINGIDA")
+            return
         }
         if (action.type === "get") {
             inventoryManager.storeItem(props.action.element, props.action.param)
         } else if (action.type === "use") {
             inventoryManager.useItem(props.action.element, props.action.param)
         }
-
-
-
-         
         console.log(props.action.text)
-        console.log(JSON.parse(window.sessionStorage.inventory))
+        console.log(JSON.parse(window.localStorage.getItem("inventory") || "[]"))
     }
     return (
         <>
-            <button onClick={actionHandler} />
+            <button onClick={actionHandler} >ACTION!</button>
         </>
     )
 }
