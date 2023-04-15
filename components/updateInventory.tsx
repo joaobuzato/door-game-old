@@ -4,30 +4,45 @@ import { useInventory } from "../contexts/InventoryContext";
 const InventoryButton = (props:{action:Action}) => {
   const { inventory, updateInventory } = useInventory();
 
-  const storeItem = (item:Item) => {
-    const foundItem = inventory.filter(i => i.name==item.name)[0]
-    console.log(foundItem)
-    if(foundItem){
-        const index = inventory.indexOf(foundItem);
-        inventory[index].param = foundItem.param + item.param
-        console.log(inventory)
+  const storeItem = (item: Item) => {
+    const newInventory = [...inventory]; // faz uma cópia do estado original
+    const foundItemIndex = newInventory.findIndex(i => i.name === item.name);
+  
+    if (foundItemIndex !== -1) {
+      // item já existe no inventário, atualiza a quantidade
+      newInventory[foundItemIndex] = {
+        name: item.name,
+        param: newInventory[foundItemIndex].param + item.param,
+      };
     } else {
-        inventory.push(item)
-        console.log(inventory)
+      // item não existe no inventário, adiciona ao final
+      newInventory.push(item);
     }
-    updateInventory(inventory);
-    
+  
+    // atualiza o estado do contexto com a nova cópia
+    updateInventory(newInventory);
+  };
+
+  const useItem = (item: Item) => {
+  const foundItemIndex = inventory.findIndex(i => i.name === item.name);
+
+  if (foundItemIndex !== -1) {
+    const newInventory = inventory.map((i, index) => {
+      if (index === foundItemIndex) {
+        const newItemParam = i.param - item.param;
+
+        return {
+          name: i.name,
+          param: newItemParam
+        };
+      }
+
+      return i;
+    }).filter(i => i.param > 0);
+
+    updateInventory(newInventory);
   }
-  const useItem = (item:Item) => {
-    const foundItem = inventory.filter(i => i.name==item.name)[0]
-    const index = inventory.indexOf(foundItem);
-    if(foundItem && foundItem.param > item.param){
-        inventory[index].param = foundItem.param - item.param
-        updateInventory(inventory)
-    } else {
-      updateInventory(inventory.splice(index, 1));
-    }
-  }
+};
 
   const isConditionsMet = (conditions:Condition[]) => {
     if(conditions.length === 0){

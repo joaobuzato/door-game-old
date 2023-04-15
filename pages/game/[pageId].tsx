@@ -32,8 +32,6 @@ export async function getStaticPaths() {
 
 
 export default function Page({ room } :any) {
-    // const {inventory, setInventory} = useContext(InventoryContext)
-    //console.log(inventory)
     
     return (<>
     <div className={styles.room_card}>
