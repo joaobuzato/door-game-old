@@ -1,0 +1,8 @@
+.inventory_wrapper {
+    background: red;
+    padding:10px;
+    border-radius: 10px;
+    border: black solid 2px;
+    display: flex;
+
+}

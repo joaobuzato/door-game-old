@@ -5,8 +5,8 @@ import Parser from 'html-react-parser';
 import {Room, Door, Action, Item} from "../../public/types"
 import { DoorLink} from "../../components/DoorLink"
 import styles from "../../styles/[pageId].module.css"
-import { ActionButton } from "@/components/ActionButton";
-import { useEffect } from "react";
+import Inventory from "@/components/Inventory";
+import InventoryButton from "@/components/updateInventory";
 
 export async function getStaticProps(context:any) {
     const {params} = context
@@ -32,7 +32,9 @@ export async function getStaticPaths() {
 
 
 export default function Page({ room } :any) {
-
+    // const {inventory, setInventory} = useContext(InventoryContext)
+    //console.log(inventory)
+    
     return (<>
     <div className={styles.room_card}>
         <h1 className={styles.room_title}>{room.title}</h1>
@@ -41,7 +43,7 @@ export default function Page({ room } :any) {
         <h3>Qual ação tomar?</h3>
         <div className={styles.door_container}>
             {room.actions.map((action:Action) => (
-            <ActionButton action={action}></ActionButton>
+            <InventoryButton action={action}></InventoryButton>
             ))}
         </div>
 
@@ -53,6 +55,9 @@ export default function Page({ room } :any) {
             ))}
         </div>
     </div>
+    <Inventory></Inventory>
+    
+    
     </>)
 
 }

@@ -13,8 +13,10 @@ export type Door = {
 }
 
 export type Action = {
+    id:number,
     type:string,
     element:string,
+    buttonText:string,
     param:number,
     text:String,
     conditions:Condition[]
@@ -26,6 +28,7 @@ export type Condition = {
 }
 
 export type Item = {
+    //id:number,
     name:string
     param:number
 }

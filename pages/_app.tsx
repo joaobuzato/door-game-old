@@ -1,15 +1,13 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
-import InventoryContext from "../components/InventoryContext"
+import {InventoryProvider} from "../contexts/InventoryContext"
 
 export default function App({ Component, pageProps }: AppProps) {
 
-  const [inventory, setInventory] = useState([]);
-
   return (
-    <InventoryContext.Provider value={{inventory:inventory, setInventory:setInventory}}>
+    <InventoryProvider>
       <Component {...pageProps} />
-    </InventoryContext.Provider>
+    </InventoryProvider>
   )
 }

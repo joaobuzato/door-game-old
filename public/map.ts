@@ -7,8 +7,8 @@ export const map :Room[]= [
         title: "O quarto mais escuro que você já viu (ou não viu)",
         text : "Você abre os olhos e não vê absolutamente nada. Este é o quarto mais escuro que você já viu em toda a sua vida. O preto no quarto é tão preto que você não enxerga nem seus pensamentos. É como estar cego. Você tateia e consegue encontrar duas portas.",
         actions: [
-            {type:"get", element:"faca", param: 1, text:"Você pegou a faca. Agora vai ficar mais fácil.", conditions:[]},
-            {type:"use", element:"faca", param: 1, text:"Você USOU a faca puta merdaaaaaaaaaaaaaaaaaaaaaaaa!", conditions:[{element1:"faca", type:"greater", element2:3}]}
+            {id: 1, type:"get", buttonText: "Pegar a faca do chão", element:"faca", param: 1, text:"Você pegou a faca. Agora vai ficar mais fácil.", conditions:[]},
+            {id: 2, type:"use", buttonText: "Fincar a faca no chão", element:"faca", param: 1, text:"Você USOU a faca puta merdaaaaaaaaaaaaaaaaaaaaaaaa!", conditions:[{element1:"faca", type:"greater", element2:1}]}
         ],
         doors: [
             { path: "1000", text: "Porta de madeira", color:"#FFD700"},
@@ -20,7 +20,10 @@ export const map :Room[]= [
         id : "1000",
         title:"O Quarto com cheiro de tudo que você pode imaginar",
         text : `O quarto que está em volta de você é do amarelo mais feio que você já viu. O cheiro é tão ruim que o ar do quarto chega a ser mais pesado. Há de tudo: algodão doce, pipoca, plástico queimado, sangue e [CENSURADO]. Seus pés pisam em algo que faz "crec". É uma barata. Você costuma sentir cheiro de baratas? De qualquer maneira, você vê mais duas portas. Suas narinas vão amar sair desse inferno olfativo.`,
-        actions: [{type:"use", element:"faca", param: 1, text:"Você USOU a faca puta merdaaaaaaaaaaaaaaaaaaaaaaaa!", conditions:[{element1:"faca", type:"greater", element2:3}]}],
+        actions: [
+            {id: 3, type:"use", buttonText: "Fincar a faca no chão", element:"faca", param: 1, text:"Você USOU a faca puta merdaaaaaaaaaaaaaaaaaaaa!", conditions:[{element1:"faca", type:"equals", element2:1}]},
+            {id: 4, type:"use", buttonText: "Se esfaquear", element:"faca", param: 1, text:"Você se esfaqueia completamente.", conditions:[{element1:"faca", type:"equals", element2:1}]}
+        ],
         doors: [
             { path: "2000", text: "Porta de aço", color:"#808080"},
             { path: "3000", text: "Porta rosa", color:"#FF00FF"},
