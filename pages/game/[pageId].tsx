@@ -52,8 +52,9 @@ export default function Page({ room } :any) {
             <DoorLink door={door}></DoorLink>
             ))}
         </div>
+        <Inventory></Inventory>
     </div>
-    <Inventory></Inventory>
+    
     
     
     </>)
