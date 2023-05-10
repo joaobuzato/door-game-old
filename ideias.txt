@@ -1,0 +1,1 @@
+Ideia: ao clicar no texto extendido, mandar o texto até o texto principal. 

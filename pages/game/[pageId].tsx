@@ -37,9 +37,9 @@ export default function Page({ room } :any) {
     <div className={styles.room_card}>
         <h1 className={styles.room_title}>{room.title}</h1>
         <p className={styles.room_p}>{Parser(room.text)}</p>
-
-        <Actions actions = {room.actions}/>
+        
         <ExpandedTextWrapper expandedTexts={room.expandedTexts}/>
+        <Actions actions = {room.actions}/>
 
         <h3 className={styles.question}>Em qual porta entrar?</h3>
         <div className={styles.door_container}>
