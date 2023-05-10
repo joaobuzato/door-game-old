@@ -92,7 +92,8 @@ const InventoryButton = (props:{action:Action}) => {
     return inventory.filter(i => i.name==name)[0]
 }
 
-  const handleClick = () => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.currentTarget.disabled = true
 
     if(!isConditionsMet(props.action.conditions)){
       console.log("A CONDIÇÃO NÃO FOI ATINGIDA")

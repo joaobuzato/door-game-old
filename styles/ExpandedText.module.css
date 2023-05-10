@@ -1,0 +1,22 @@
+.text {
+    width: 95%;
+    min-height: 100px;
+    background:#8f8f8f;
+    border-radius: 10px;
+    border: 1px #8f8f8f;
+    margin:5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 99%;
+    
+}

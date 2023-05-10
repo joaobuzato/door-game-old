@@ -3,10 +3,18 @@ export type Room = {
     title:string,
     text:string,
     doors?:Door[],
-    actions?:Action[]
+    actions?:Action[],
+    expandedTexts?:ExpandedText[]
+}
+
+export type ExpandedText = {
+    id:number,
+    sentence:string,
+    text:string
 }
 
 export type Door = {
+    id: number
     path: string,
     text: string,
     color?: string
@@ -18,7 +26,7 @@ export type Action = {
     element:string,
     buttonText:string,
     param:number,
-    text:String,
+    text:string,
     conditions:Condition[]
 }
 export type Condition = {

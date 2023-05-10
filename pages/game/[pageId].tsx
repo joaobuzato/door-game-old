@@ -1,12 +1,12 @@
 
 import { map } from "../../public/map"
-import Link from 'next/link'
 import Parser from 'html-react-parser';
 import {Room, Door, Action, Item} from "../../public/types"
 import { DoorLink} from "../../components/DoorLink"
 import styles from "../../styles/[pageId].module.css"
 import Inventory from "@/components/Inventory";
-import InventoryButton from "@/components/updateInventory";
+import Actions from "@/components/Actions";
+import ExpandedTextWrapper from "@/components/ExpandedTextWrapper";
 
 export async function getStaticProps(context:any) {
     const {params} = context
@@ -38,18 +38,13 @@ export default function Page({ room } :any) {
         <h1 className={styles.room_title}>{room.title}</h1>
         <p className={styles.room_p}>{Parser(room.text)}</p>
 
-        <h3>Qual ação tomar?</h3>
-        <div className={styles.door_container}>
-            {room.actions.map((action:Action) => (
-            <InventoryButton action={action}></InventoryButton>
-            ))}
-        </div>
+        <Actions actions = {room.actions}/>
+        <ExpandedTextWrapper expandedTexts={room.expandedTexts}/>
 
         <h3 className={styles.question}>Em qual porta entrar?</h3>
-
         <div className={styles.door_container}>
             {room.doors.map((door:Door) => (
-            <DoorLink door={door}></DoorLink>
+            <DoorLink key={door.id} door={door}></DoorLink>
             ))}
         </div>
         <Inventory></Inventory>
