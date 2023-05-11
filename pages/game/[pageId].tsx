@@ -7,6 +7,7 @@ import styles from "../../styles/[pageId].module.css"
 import Inventory from "@/components/Inventory";
 import Actions from "@/components/Actions";
 import ExpandedTextWrapper from "@/components/ExpandedTextWrapper";
+import { use, useState } from "react";
 
 export async function getStaticProps(context:any) {
     const {params} = context
@@ -32,13 +33,19 @@ export async function getStaticPaths() {
 
 
 export default function Page({ room } :any) {
+
+    const [text,setText] = useState(Parser(room.text))
+
+    function expandText(expandedText:string) {
+        setText((oldText) => {return `${oldText} ${expandedText}` })
+    }
     
     return (<>
     <div className={styles.room_card}>
         <h1 className={styles.room_title}>{room.title}</h1>
-        <p className={styles.room_p}>{Parser(room.text)}</p>
+        <p className={styles.room_p}>{text}</p>
         
-        <ExpandedTextWrapper expandedTexts={room.expandedTexts}/>
+        <ExpandedTextWrapper onClick={expandText} expandedTexts={room.expandedTexts}/>
         <Actions actions = {room.actions}/>
 
         <h3 className={styles.question}>Em qual porta entrar?</h3>

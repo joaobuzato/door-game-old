@@ -1,5 +1,6 @@
 import { Action, Condition, Item } from "../public/types"
 import { useInventory } from "../contexts/InventoryContext";
+import styles from "../styles/Actions.module.css"
 
 const InventoryButton = (props:{action:Action}) => {
   const { inventory, updateInventory } = useInventory();
@@ -66,7 +67,6 @@ const InventoryButton = (props:{action:Action}) => {
         } else if (typeof cond.element2 == "number"){
             element2 = cond.element2
         }
-        console.log(element1, cond.type, element2)
         switch(cond.type){
             case "equals":
                 if (element1 != cond.element2){
@@ -96,7 +96,6 @@ const InventoryButton = (props:{action:Action}) => {
     event.currentTarget.disabled = true
 
     if(!isConditionsMet(props.action.conditions)){
-      console.log("A CONDIÇÃO NÃO FOI ATINGIDA")
       return
     }
     const item:Item = {name:props.action.element, param:props.action.param}
@@ -107,7 +106,7 @@ const InventoryButton = (props:{action:Action}) => {
     }
     
   };
-  return (<button key={props.action.id} onClick={handleClick}>{props.action.buttonText}</button>);
+  return (<button className={styles.button} key={props.action.id} onClick={handleClick}>{props.action.buttonText}</button>);
 }
 
 export default InventoryButton;

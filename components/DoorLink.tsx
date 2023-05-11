@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Door } from "../public/types"
-import  styles  from "../styles/doorLink.module.css"
+import  styles  from "../styles/DoorLink.module.css"
 
 export const DoorLink = (props:{door:Door}) => {
     const doorPath = `/game/${props.door.path}`

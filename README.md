@@ -8,7 +8,7 @@
 * [x] sistema de inventário
 * [x] inventário sempre na tela
 * [ ] landing page
-* [ ] colocar texto expandido na tela 
+* [X] colocar texto expandido na tela 
 
 
 # Projeto Futuro
