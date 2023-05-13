@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npm run build && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "npx playwright test", 
-    "test:ui": "npx playwright test --ui", 
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui",
     "test:report": "npx playwright show-report"
   },
   "dependencies": {
