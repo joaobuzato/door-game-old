@@ -7,7 +7,7 @@ import styles from "../../styles/[pageId].module.css"
 import Inventory from "@/components/Inventory";
 import Actions from "@/components/Actions";
 import ExpandedTextWrapper from "@/components/ExpandedTextWrapper";
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import Doors from "@/components/Doors";
 
 export async function getStaticProps(context:any) {
@@ -35,15 +35,19 @@ export async function getStaticPaths() {
 
 export default function Page({ room } :any) {
 
+    useEffect(() => {
+        if (room.text === text)
+            setText(Parser(room.text))
+    })
+    
     const [text,setText] = useState(Parser(room.text))
-    console.log(room)
 
     function expandText(expandedText:string) {
         setText((oldText) => {return `${oldText} ${expandedText}` })
     }
     
     return (<>
-    <div className={styles.room_card}>
+        <div className={styles.room_card}>
         <h1 className={styles.room_title}>{room.title}</h1>
         <p className={styles.room_p}>{text}</p>
         
