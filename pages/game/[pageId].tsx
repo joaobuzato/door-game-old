@@ -1,14 +1,14 @@
 
 import { map } from "../../public/map"
 import Parser from 'html-react-parser';
-import {Room, Door, Action, Item} from "../../public/types"
-import { DoorLink} from "../../components/DoorLink"
+import {Room} from "../../public/types"
 import styles from "../../styles/[pageId].module.css"
 import Inventory from "@/components/Inventory";
 import Actions from "@/components/Actions";
 import ExpandedTextWrapper from "@/components/ExpandedTextWrapper";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Doors from "@/components/Doors";
+import Head from "next/head";
 
 export async function getStaticProps(context:any) {
     const {params} = context
@@ -32,7 +32,6 @@ export async function getStaticPaths() {
     return { paths, fallback:false}
 }
 
-
 export default function Page({ room } :any) {
 
     useEffect(() => {
@@ -43,10 +42,13 @@ export default function Page({ room } :any) {
     const [text,setText] = useState(Parser(room.text))
 
     function expandText(expandedText:string) {
-        setText((oldText) => {return `${oldText} ${expandedText}` })
+        setText((oldText) => {return `${oldText} \n${expandedText}` })
     }
     
     return (<>
+        <Head>
+            <title>{room.title}</title>
+        </Head>
         <div className={styles.room_card}>
         <h1 className={styles.room_title}>{room.title}</h1>
         <p className={styles.room_p}>{text}</p>
