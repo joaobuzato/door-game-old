@@ -1,19 +1,17 @@
-
-
 .room_card {
-    background-color: black;
-    color: aliceblue;
-    padding: 100px;
-    border-radius: 15px;
+  background-color: black;
+  color: aliceblue;
+  padding: 100px;
+  border-radius: 15px;
 }
 .room_title {
-    font-style: oblique;
-    font-family: Times;
-    font-size:250%;
-    padding-bottom: 34px;
-    border-bottom: 1px white solid;
-    max-width: 100%;
+  font-style: oblique;
+  font-family: Times;
+  font-size: 250%;
+  padding-bottom: 34px;
+  border-bottom: 1px white solid;
+  max-width: 100%;
 }
 .room_p {
-    font-style: oblique;
+  font-style: oblique;
 }

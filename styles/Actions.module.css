@@ -1,13 +1,12 @@
 .door_container {
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 70%;
-    padding: 20px;
-    display: flex;
-
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 70%;
+  padding: 20px;
+  display: flex;
 }
 
 .button {
-    padding: 20px;
+  padding: 20px;
 }

@@ -1,23 +1,17 @@
-import { test, expect } from '@playwright/test';
-import { beforeEach } from 'node:test';
-
+import { test, expect } from "@playwright/test";
+import { beforeEach } from "node:test";
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('http://localhost:3000');
+  await page.goto("http://localhost:3000");
 });
 
-test('has page title', async ({page}) => {
-  
+test("has page title", async ({ page }) => {
   await expect(page).toHaveTitle(/Door Game/);
-})
+});
 
-test('home has link to Door Game', async ({page}) => {
-  await expect(page.locator("h1 > a")).toHaveText("Play Door Game")
-})
-
-
-
-
+test("home has link to Door Game", async ({ page }) => {
+  await expect(page.locator("h1 > a")).toHaveText("Play Door Game");
+});
 
 // test('has title', async ({ page }) => {
 //   await page.goto('https://playwright.dev/');
