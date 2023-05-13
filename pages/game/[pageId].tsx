@@ -32,16 +32,14 @@ export async function getStaticPaths() {
 }
 
 export default function Page({ room }: any) {
-  // useEffect(() => {
-  //   console.log("room     " + room.text, "text    " + text);
-  //   if (room.text === text) setText(Parser(room.text));
-  // });
-
-  const [text, setText] = useState(Parser(room.text));
+  const [text, setText] = useState("");
 
   function expandText(expandedText: string) {
     setText((oldText) => {
-      return `${oldText} \n${expandedText}`;
+      return `
+      ${oldText}
+      
+      ${expandedText}`;
     });
   }
 
@@ -52,7 +50,8 @@ export default function Page({ room }: any) {
       </Head>
       <div className={styles.room_card}>
         <h1 className={styles.room_title}>{room.title}</h1>
-        <p key={room.id} className={styles.room_p}>
+        <p className={styles.room_p}>
+          {room.text}
           {text}
         </p>
 
