@@ -12,7 +12,7 @@ export default function Home() {
       <title>Door Game</title>
     </Head>
       <main>
-        <Link href={"/game"}>Play Door Game</Link>
+        <h1 id="play"><Link href={"/game"}>Play Door Game</Link></h1>
       </main>
     </>
   )
