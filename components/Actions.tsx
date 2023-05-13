@@ -1,5 +1,5 @@
 import { Action } from "@/public/types";
-import InventoryButton from "./updateInventory";
+import InventoryButton from "./UpdateInventory";
 import styles from "../styles/Actions.module.css"
 
 export default function Actions (props : {actions : Action[]}) {

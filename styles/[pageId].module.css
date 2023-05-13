@@ -1,3 +1,13 @@
+.door_container {
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 70%;
+    padding: 20px;
+    display: flex;
+
+}
+
 .room_card {
     background-color: black;
     color: aliceblue;
@@ -14,14 +24,4 @@
 }
 .room_p {
     font-style: oblique;
-}
-
-.door_container {
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 70%;
-    padding: 20px;
-    display: flex;
-
 }

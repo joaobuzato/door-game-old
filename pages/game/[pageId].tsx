@@ -8,6 +8,7 @@ import Inventory from "@/components/Inventory";
 import Actions from "@/components/Actions";
 import ExpandedTextWrapper from "@/components/ExpandedTextWrapper";
 import { use, useState } from "react";
+import Doors from "@/components/Doors";
 
 export async function getStaticProps(context:any) {
     const {params} = context
@@ -35,6 +36,7 @@ export async function getStaticPaths() {
 export default function Page({ room } :any) {
 
     const [text,setText] = useState(Parser(room.text))
+    console.log(room)
 
     function expandText(expandedText:string) {
         setText((oldText) => {return `${oldText} ${expandedText}` })
@@ -47,13 +49,8 @@ export default function Page({ room } :any) {
         
         <ExpandedTextWrapper onClick={expandText} expandedTexts={room.expandedTexts}/>
         <Actions actions = {room.actions}/>
-
-        <h3 className={styles.question}>Em qual porta entrar?</h3>
-        <div className={styles.door_container}>
-            {room.doors.map((door:Door) => (
-            <DoorLink key={door.id} door={door}></DoorLink>
-            ))}
-        </div>
+        <Doors doors = {room.doors}></Doors>
+        
         <Inventory></Inventory>
     </div>
     
