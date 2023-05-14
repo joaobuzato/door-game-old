@@ -1,5 +1,4 @@
 import { map } from "../../public/map";
-import Parser from "html-react-parser";
 import { Room } from "../../public/types";
 import styles from "../../styles/[pageId].module.css";
 import Inventory from "@/components/Inventory";

@@ -10,7 +10,10 @@ test("has page title", async ({ page }) => {
 });
 
 test("home has link to Door Game", async ({ page }) => {
-  await expect(page.locator("h1 > a")).toHaveText("Play Door Game");
+  await expect(page.locator("a > button")).toHaveText("Entrar na Porta");
+});
+test("titulo do jogo deve estar presente na tela", async ({ page }) => {
+  await expect(page.locator("h1")).toHaveText("Alguma coisa aconteceu");
 });
 
 // test('has title', async ({ page }) => {
