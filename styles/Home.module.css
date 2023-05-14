@@ -13,10 +13,11 @@
 .door_inside {
   width: 226px;
   height: 558px;
-  background: red;
+  background: white;
 }
 .door_over {
-  background: grey;
-  width: 200px;
-  height: 500px;
+  width: 30px;
+  height: 520px;
+  border-left: 200px solid grey;
+  border-bottom: 38px solid transparent;
 }
