@@ -1,3 +1,13 @@
+# How to run
+## install dependencies
+npm i 
+## run
+npm run dev
+## tests
+npm run tests
+
+
+
 # TODO LIST
 
 * [x] suporte a html no texto
