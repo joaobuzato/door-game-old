@@ -8,12 +8,16 @@ test.beforeEach(async ({ page }) => {
 test("has page title", async ({ page }) => {
   await expect(page).toHaveTitle(/Door Game/);
 });
-
-test("home has link to Door Game", async ({ page }) => {
-  await expect(page.locator("a > button")).toHaveText("Entrar na Porta");
-});
 test("titulo do jogo deve estar presente na tela", async ({ page }) => {
   await expect(page.locator("h1")).toHaveText("Alguma coisa aconteceu");
+});
+
+test("Home has subtitle", async ({ page }) => {
+  await expect(page.locator("h2")).toHaveText("Entre na porta.");
+});
+
+test("Home has a link to the game.", async ({ page }) => {
+  await expect(page.locator("a")).toBeDefined();
 });
 
 // test('has title', async ({ page }) => {

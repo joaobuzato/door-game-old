@@ -13,12 +13,12 @@ export default function Home() {
       </Head>
       <main className={styles.main_container}>
         <h1 className={styles.home_title}>Alguma coisa aconteceu</h1>
-        <div className={styles.door_inside}>
-          <div className={styles.door_over}></div>
-        </div>
         <Link href={"/game"}>
-          <button>Entrar na Porta</button>
+          <div className={styles.door_inside}>
+            <div className={styles.door_over}></div>
+          </div>
         </Link>
+        <h2 className={styles.home_subtitle}>Entre na porta. </h2>
       </main>
     </>
   );
