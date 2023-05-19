@@ -1,16 +1,23 @@
 import { ExpandedText as ExpandedTextType } from "@/public/types";
-import { useState } from "react";
-import styles from "../styles/ExpandedText.module.css"
+import styles from "../styles/ExpandedText.module.css";
+import React from "react";
+export default function ExpandedText(props: {
+  onClick: Function;
+  expandedText: ExpandedTextType;
+}) {
+  function clickHandler(event: React.MouseEvent<HTMLDivElement>) {
+    props.onClick(props.expandedText.text);
+    event.currentTarget.style.visibility = "hidden";
+  }
 
-export default function ExpandedText (props : {onClick: Function, expandedText : ExpandedTextType}) {
-
-    const [text,setText] = useState(props.expandedText.sentence)
-
-    function clickHandler(event: React.MouseEvent<HTMLDivElement>) {
-        //SUMIR COM O BOTÃO
-        props.onClick(props.expandedText.text)
-    }
-
-    return <div key={props.expandedText.id} className={styles.text} onClick={clickHandler}>{text}</div>
- 
+  return (
+    <div
+      key={props.expandedText.id}
+      className={styles.text}
+      onClick={clickHandler}
+      data-testid={`expanded-text-${props.expandedText.id}`}
+    >
+      {props.expandedText.sentence}
+    </div>
+  );
 }
