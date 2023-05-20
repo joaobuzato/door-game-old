@@ -13,8 +13,6 @@ describe("Expanded Text Button", () => {
   const user = userEvent.setup();
   const handleClick = jest.fn();
 
-  beforeEach(() => {});
-
   test("button should render correctly", async () => {
     render(
       <ExpandedText
@@ -30,7 +28,6 @@ describe("Expanded Text Button", () => {
   });
 
   test("hide button after click", async () => {
-    const user = userEvent.setup();
     const expandedText = {
       id: 1,
       sentence: "Click Here!",
