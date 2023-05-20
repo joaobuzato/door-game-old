@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { DoorLink } from "../components/DoorLink";
 
-describe("Doors container", () => {
+describe("DoorLink", () => {
   const door = {
     id: 1,
     path: "1000",
