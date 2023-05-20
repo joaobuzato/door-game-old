@@ -1,7 +1,0 @@
-{
-  "testMatch": ["**/__tests__/**"],
-  "moduleNameMapper": {
-    "\\.(css|less)$": "identity-obj-proxy"
-  },
-  "testEnvironment": "jest-environment-jsdom"
-}
