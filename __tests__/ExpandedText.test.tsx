@@ -11,7 +11,7 @@ describe("Expanded Text Button", () => {
   };
 
   const user = userEvent.setup();
-  function handleClick(text: string) {}
+  const handleClick = jest.fn();
 
   beforeEach(() => {});
 
@@ -31,7 +31,6 @@ describe("Expanded Text Button", () => {
 
   test("hide button after click", async () => {
     const user = userEvent.setup();
-    const handleClick = jest.fn();
     const expandedText = {
       id: 1,
       sentence: "Click Here!",
