@@ -7,6 +7,6 @@ module.exports = {
     "\\.(css|less)$": "jest-css-modules",
   },
   transform: {
-    "^.+\\.(ts|tsx)$": ["ts-jest", { tsConfig: "./tsconfig.test.json" }],
+    "^.+\\.(ts|tsx)$": ["ts-jest", { tsconfig: "./tsconfig.test.json" }],
   },
 };
