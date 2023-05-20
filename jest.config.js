@@ -6,4 +6,7 @@ module.exports = {
   moduleNameMapper: {
     "\\.(css|less)$": "jest-css-modules",
   },
+  transform: {
+    "^.+\\.(ts|tsx)$": ["ts-jest", { tsConfig: "./tsconfig.test.json" }],
+  },
 };

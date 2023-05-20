@@ -3,25 +3,54 @@ import { render, screen } from "@testing-library/react";
 import ExpandedText from "../components/ExpandedText";
 import userEvent from "@testing-library/user-event";
 
-test("hide button after click", async () => {
-  const user = userEvent.setup();
-  function handleClick(text: string) {
-    console.log(text);
-  }
+describe("Expanded Text Button", () => {
   const expandedText = {
     id: 1,
     sentence: "Click Here!",
     text: "text is expanding!",
   };
 
-  render(
-    <ExpandedText
-      onClick={handleClick}
-      expandedText={expandedText}
-    ></ExpandedText>
-  );
+  const user = userEvent.setup();
+  function handleClick(text: string) {}
 
-  const button = await screen.findByTestId(`expanded-text-${expandedText.id}`);
+  beforeEach(() => {});
 
-  await user.click(button);
+  test("button should render correctly", async () => {
+    render(
+      <ExpandedText
+        onClick={handleClick}
+        expandedText={expandedText}
+      ></ExpandedText>
+    );
+
+    const button = screen.getByRole("button");
+
+    expect(button).toBeVisible;
+    expect(button.textContent).toBe(expandedText.sentence);
+  });
+
+  test("hide button after click", async () => {
+    const user = userEvent.setup();
+    const handleClick = jest.fn();
+    const expandedText = {
+      id: 1,
+      sentence: "Click Here!",
+      text: "text is expanding!",
+    };
+
+    render(
+      <ExpandedText
+        onClick={handleClick}
+        expandedText={expandedText}
+      ></ExpandedText>
+    );
+
+    const button = screen.getByRole("button");
+
+    await user.click(button);
+
+    expect(button).not.toBeVisible;
+    expect(handleClick).toHaveBeenCalledTimes(1);
+    expect(handleClick).toHaveBeenCalledWith(expandedText.text);
+  });
 });

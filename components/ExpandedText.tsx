@@ -5,19 +5,18 @@ export default function ExpandedText(props: {
   onClick: Function;
   expandedText: ExpandedTextType;
 }) {
-  function clickHandler(event: React.MouseEvent<HTMLDivElement>) {
+  function clickHandler(event: React.MouseEvent<HTMLButtonElement>) {
     props.onClick(props.expandedText.text);
     event.currentTarget.style.visibility = "hidden";
   }
 
   return (
-    <div
+    <button
       key={props.expandedText.id}
       className={styles.text}
       onClick={clickHandler}
-      data-testid={`expanded-text-${props.expandedText.id}`}
     >
       {props.expandedText.sentence}
-    </div>
+    </button>
   );
 }
