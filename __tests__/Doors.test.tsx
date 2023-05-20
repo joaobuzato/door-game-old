@@ -1,6 +1,5 @@
 import * as React from "react";
 import { render, screen } from "@testing-library/react";
-import ExpandedText from "../components/ExpandedText";
 import userEvent from "@testing-library/user-event";
 import Doors from "../components/Doors";
 
@@ -16,5 +15,12 @@ describe("Doors container", () => {
 
   test("doors should render correctly", async () => {
     render(<Doors doors={doors}></Doors>);
+    const title = await screen.findByRole("heading", { level: 3 });
+    const container = await screen.findByTestId("doors-container");
+
+    expect(title).toBeInTheDocument;
+    expect(title.textContent).toBe("Em qual porta entrar?");
+    expect(container).toBeInTheDocument;
+    expect(container.childElementCount).toBe(2);
   });
 });

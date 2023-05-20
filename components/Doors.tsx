@@ -7,7 +7,7 @@ export default function Doors(props: { doors: Door[] }) {
   return (
     <>
       <h3 className={styles.question}>Em qual porta entrar?</h3>
-      <div className={styles.door_container}>
+      <div data-testid="doors-container" className={styles.door_container}>
         {props.doors.map((door: Door) => (
           <DoorLink key={door.id} door={door}></DoorLink>
         ))}
