@@ -1,17 +1,13 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+
+import styles from "../styles/Game.module.css";
 
 const Game = () => {
-  const [path, setPath] = useState<string>();
-  useEffect(() => {
-    setPath(window.location.pathname);
-  });
-
   return (
-    <div>
+    <main className={styles.main}>
       <p>Este é um jogo sobre abrir portas. Você verá.</p>
       <Link href="/game/0000">Começar jogo.</Link>
-    </div>
+    </main>
   );
 };
 
