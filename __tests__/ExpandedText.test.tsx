@@ -20,7 +20,6 @@ describe("Expanded Text Button", () => {
         expandedText={expandedText}
       ></ExpandedText>
     );
-
     const button = screen.getByRole("button");
 
     expect(button).toBeVisible;
@@ -40,7 +39,6 @@ describe("Expanded Text Button", () => {
         expandedText={expandedText}
       ></ExpandedText>
     );
-
     const button = screen.getByRole("button");
 
     await user.click(button);
