@@ -1,7 +1,7 @@
 .home_title {
   color: #ffffff;
   font-family: "Roboto Mono", monospace;
-  font-size: 5vh;
+  font-size: 6vw;
   margin-top: 20px;
 }
 
@@ -9,7 +9,7 @@
   color: #ffffff;
   font-family: "Roboto Mono", monospace;
   font-style: italic;
-  font-size: 65px;
+  font-size: 5vw;
 }
 
 .main_container {
@@ -19,56 +19,4 @@
   align-items: center;
   gap: 20px;
   min-height: 100%;
-}
-
-.door_inside {
-  width: 226px;
-  height: 558px;
-  background: #fac8c8;
-  animation: change_color 5s;
-  animation-iteration-count: 3;
-}
-.door_over {
-  width: 30px;
-  height: 520px;
-  border-left: 200px solid #000000;
-  border-bottom: 38px solid transparent;
-  animation: open_door 5s;
-  animation-iteration-count: 3;
-}
-
-@keyframes open_door {
-  0% {
-    border-left: 200px solid #000000;
-  }
-  25% {
-    border-left: 180px solid #000000;
-  }
-  50% {
-    border-left: 160px solid #000000;
-  }
-  75% {
-    border-left: 140px solid #000000;
-  }
-  100% {
-    border-left: 200px solid #000000;
-  }
-}
-
-@keyframes change_color {
-  0% {
-    background: #fac8c8;
-  }
-  25% {
-    background: #db8888;
-  }
-  50% {
-    background: #c44f4f;
-  }
-  75% {
-    background: #bd2828;
-  }
-  100% {
-    background: #fac8c8;
-  }
 }

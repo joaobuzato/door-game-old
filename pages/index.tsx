@@ -1,3 +1,4 @@
+import OpeningDoor from "@/components/OpeningDoor";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import Link from "next/link";
@@ -14,9 +15,7 @@ export default function Home() {
       <main className={styles.main_container}>
         <h1 className={styles.home_title}>Alguma coisa aconteceu</h1>
         <Link href={"/game"}>
-          <div className={styles.door_inside}>
-            <div className={styles.door_over}></div>
-          </div>
+          <OpeningDoor />
         </Link>
         <h2 className={styles.home_subtitle}>Entre na porta. </h2>
       </main>
