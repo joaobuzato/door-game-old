@@ -2,6 +2,7 @@ export type Room = {
   id: string;
   title: string;
   text: string;
+  path: string;
   doors?: Door[];
   actions?: Action[];
   expandedTexts?: ExpandedText[];

@@ -1,4 +1,3 @@
-import { map } from "../../public/map";
 import { Room } from "../../public/types";
 import styles from "../../styles/[pageId].module.css";
 import Inventory from "@/components/Inventory";
@@ -10,19 +9,21 @@ import Head from "next/head";
 
 export async function getStaticProps(context: any) {
   const { params } = context;
-  const rooms: Room[] = map;
-  const room = rooms.find((r) => r.id == params.pageId);
+  const result = await fetch("http://localhost:8080/rooms");
+  const rooms: Room[] = await result.json();
+  const room = rooms.find((r) => r.path == params.pageId);
   return {
     props: { room },
   };
 }
 
 export async function getStaticPaths() {
-  const rooms: Room[] = map;
+  const result = await fetch("http://localhost:8080/rooms");
+  const rooms: Room[] = await result.json();
   const paths = rooms.map((room) => {
     return {
       params: {
-        pageId: `${room.id}`,
+        pageId: `${room.path}`,
       },
     };
   });
