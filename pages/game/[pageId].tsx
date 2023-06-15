@@ -9,7 +9,7 @@ import Head from "next/head";
 
 export async function getStaticProps(context: any) {
   const { params } = context;
-  const result = await fetch("44.201.179.67:8080/rooms");
+  const result = await fetch("http://44.201.179.67:8080/rooms");
   const rooms: Room[] = await result.json();
   const room = rooms.find((r) => r.path == params.pageId);
   return {
@@ -18,7 +18,7 @@ export async function getStaticProps(context: any) {
 }
 
 export async function getStaticPaths() {
-  const result = await fetch("44.201.179.67:8080/rooms");
+  const result = await fetch("http://44.201.179.67:8080/rooms");
   const rooms: Room[] = await result.json();
   const paths = rooms.map((room) => {
     return {
